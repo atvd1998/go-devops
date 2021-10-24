@@ -1,6 +1,10 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"fmt"
+
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
 	r := gin.Default()
@@ -9,5 +13,7 @@ func main() {
 			"message": "pong",
 		})
 	})
-	r.Run()
+	if err := r.Run().Error; err != nil {
+		fmt.Print("Error when start server")
+	}
 }
